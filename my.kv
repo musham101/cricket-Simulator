@@ -1,0 +1,229 @@
+
+<SplashScreen>:
+       #  FloatLayout:
+       #    Label:
+        #        text: "Create an Account"
+
+<CreateAccountWindow>:
+    name: "create"
+
+    namee: namee
+    email: email
+    password: passw
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+
+            Image:
+                source: 'Signup.png'
+                size_hint: 0.5, 0.2
+                pos_hint: {"x":0.3, "top":0.95}
+            TextInput:
+                hint_text:'User Name: '
+                pos_hint: {"x":0.2, "top":0.77}
+                size_hint: 0.7,0.08
+                id: namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+            TextInput:
+                hint_text:'Email: '
+                pos_hint: {"x":0.2, "top":0.77-0.10}
+                size_hint: 0.7,0.08
+                id: email
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+            TextInput:
+                hint_text:'Password: '
+                pos_hint: {"x":0.2, "top":0.75-0.10*2}
+                size_hint: 0.7,0.08
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+            TextInput:
+                hint_text:'Confirm Password: '
+                pos_hint: {"x":0.2, "top":0.75-0.10*3}
+                size_hint: 0.7,0.08
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+            pos_hint:{"x":0.25,"y":0.2}
+            size_hint: 0.6, 0.1
+            font_size:14
+            font_name:"Comic"
+            color:0,0,0,1
+            text: "Already have an Account? Log In"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+        RectangleFlatButton:
+            background_color:(0/255,150/255,255/255,1)
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.2, 0.07
+            text: "Back"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+        RectangleFlatButton:
+            background_color:(0/255,150/255,255/255,1)
+            pos_hint:{"x":0.6,"y":0.05}
+            size_hint: 0.2, 0.07
+            text: "Submit"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+
+
+<LoginWindow>:
+    name: "login"
+
+    email: email
+    password: password
+
+    FloatLayout:
+
+        Label:
+            text:"Welcome to CricCenter "
+            font_size:25
+            font_name:"Candara"
+            pos_hint: {"x":0.35, "top":1}
+            size_hint: 0.35, 0.15
+        Image:
+            source: 'loginWindow.png'
+            size_hint: 0.35, 0.15
+            pos_hint: {"x":0.35, "top":0.85}
+        TextInput:
+            hint_text:'Email: '
+            id: email
+            # font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.2 , "top":0.65}
+            size_hint: 0.7, 0.08
+
+        TextInput:
+            hint_text:'Password'
+            id: password
+            # font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.2, "top":0.55}
+            size_hint: 0.7, 0.08
+
+        RectangleFlatButton:
+            pos_hint:{"x":0.6,"y":0.09}
+            size_hint: 0.2, 0.07
+            background_color:(0/255,150/255,255/255,1)
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+        Button:
+            pos_hint:{"x":0.25,"y":0.25}
+            size_hint: 0.6, 0.1
+            font_size:14
+            font_name:"Comic"
+            color:0,0,0,1
+            text: "Don't have an Account? Create One"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+<MainPage>:
+    name: "mainPage"
+    FloatLayout:
+
+        Label:
+            text:"Welcome to Cricket Simulator "
+            font_size:25
+            font_name:"Candara"
+            pos_hint: {"x":0.35, "top":1}
+            size_hint: 0.35, 0.15
+            
+
+        RectangleFlatButton:
+            pos_hint:{"x":0.3,"y":0.7}
+            size_hint: 0.4, 0.09
+            text: "Start Session "
+            font_size: 20
+            on_release:
+                root.PoseCalculate()
+
+        RectangleFlatButton:
+            pos_hint:{"x":0.3,"y":0.55}
+            size_hint: 0.4, 0.09
+            text: "Session History"
+            font_size: 20
+
+        RectangleFlatButton:
+            pos_hint:{"x":0.3,"y":0.4}
+            size_hint: 0.4, 0.09
+            text: "Analysis"
+            font_size: 20
+
+    RectangleFlatButton:
+        background_color:(0/255,150/255,255/255,1)
+        pos_hint:{"x":0.2,"y":0.09}
+        size_hint: 0.2, 0.07
+        text: "Logout"
+        font_size: (root.width**2 + root.height**2) / 14**4
+
+
+<MainWindow>:
+    n: n
+    email: email
+    created:created
+
+    FloatLayout:
+        Label:
+            id: n
+            pos_hint:{"x": 0.1, "top":0.9}
+            size_hint:0.8, 0.2
+            text: "Cricket Simulator: "
+
+        Label:
+            id: email
+            pos_hint:{"x": 0.1, "top":0.7}
+            size_hint:0.8, 0.2
+            text: "Email: "
+
+        Label:
+            id: created
+            pos_hint:{"x": 0.1, "top":0.5}
+            size_hint:0.8, 0.2
+            text: "Created: "
+
+        RectangleFlatButton:
+            background_color:(0/255,150/255,255/255,1)
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.2, 0.07
+            text: "Logout"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+
+
+<RectangleFlatButton>:
+
+    background_color: 0, 0, 0, 0
+    color: root.primary_color
+
+    canvas.before:
+        Color:
+            rgba: root.primary_color
+        Line:
+            width: 1
+            rectangle: (self.x, self.y, self.width, self.height)
+
