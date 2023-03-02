@@ -6,7 +6,7 @@ import mediapipe as mp
 
 
 # Load the saved model
-model = keras.models.load_model('model.h5')
+model = keras.models.load_model('Models/model.h5')
 
 mp_draw = mp.solutions.drawing_utils # use to draw skeleton on body
 mp_pose = mp.solutions.pose # human pose 
