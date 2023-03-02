@@ -6,7 +6,7 @@ import mediapipe as mp
 
 
 # Load the saved model
-model = keras.models.load_model('cricket_shot_model.h5')
+model = keras.models.load_model('model.h5')
 
 mp_draw = mp.solutions.drawing_utils # use to draw skeleton on body
 mp_pose = mp.solutions.pose # human pose 
@@ -54,11 +54,12 @@ def pose_classification():
         pred_class = class_labels[np.argmax(pred_probs)]
         pred_prob = np.max(pred_probs)
 
-        if pred_prob < 0.99:
-            pred_class = "Normal Stand"
-    
-        # Display the result
-        cv2.putText(frame, f'{pred_class} ({pred_prob:.2f})', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 5)
+        if pred_prob > 0.99:
+            # Display the result
+            cv2.putText(frame, f'{pred_class} ({pred_prob:.2f})', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 0, 0), 5)
+        else:
+            cv2.putText(frame, "UnKnown", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 0, 0), 5)
+
         cv2.imshow('frame', frame)
     
         # Press 'q' to exit
